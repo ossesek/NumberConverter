@@ -1,10 +1,13 @@
 package pl.nc;
 
 public class ConvertToHex extends Converter{
-    String hexNumber = null;
+
+    public ConvertToHex() {
+    }
 
     @Override
     protected String convert(int numberToConvert) {
+        String hexNumber = "";
         hexNumber = Integer.toHexString(numberToConvert);
 
         if (hexNumber.length() > 1){
