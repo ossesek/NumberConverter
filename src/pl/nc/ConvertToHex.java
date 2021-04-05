@@ -2,13 +2,14 @@ package pl.nc;
 
 public class ConvertToHex extends Converter{
 
-    public ConvertToHex() {
+    public ConvertToHex(int numberToConvert) {
+        super(numberToConvert);
     }
 
     @Override
-    protected String convert(int numberToConvert) {
-        String hexNumber = "";
-        hexNumber = Integer.toHexString(numberToConvert);
+    protected String convert() {
+        int numberToConvert = getNumberToConvert();
+        String hexNumber = Integer.toHexString(numberToConvert);
 
         if (hexNumber.length() > 1){
             return "0x" + hexNumber;

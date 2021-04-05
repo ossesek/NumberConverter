@@ -1,14 +1,20 @@
 package pl.nc;
 
 public abstract class Converter {
+    private final int numberToConvert;
 
-    public Converter() {
+    public Converter(int numberToConvert) {
+        this.numberToConvert = numberToConvert;
     }
 
-    protected abstract String convert(int numberToConvert);
+    public int getNumberToConvert() {
+        return numberToConvert;
+    }
 
-    public void displayResult(int numberToConvert){
-        String result = convert(numberToConvert);
+    protected abstract String convert();
+
+    public void displayResult(){
+        String result = convert();
         System.out.println("Your converted value: " + result);
     }
 

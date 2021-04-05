@@ -8,8 +8,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int intValueToConvert = 0;
         String conversionType = null;
-        Converter convertToHex = new ConvertToHex();
-        Converter convertToRoman = new ConvertToRoman();
 
         System.out.println("Choose number and conversion type (Roman/Hexadecimal) ");
         String userChoice = scanner.nextLine();
@@ -32,13 +30,19 @@ public class Main {
             conversionType = parts[1].toUpperCase();
         }
 
-        if(conversionType.charAt(0) != 'R' && conversionType.charAt(0) != 'H'){
-            System.err.println("Select the correct conversion type (Roman/Hexadecimal)");
-            System.exit(1);
-        } else if (conversionType.charAt(0) == 'R') {
-            convertToRoman.displayResult(intValueToConvert);
-        } else {
-            convertToHex.displayResult(intValueToConvert);
+        switch (conversionType) {
+            case "ROMAN" -> {
+                Converter convert = new ConvertToRoman(intValueToConvert);
+                convert.displayResult();
+            }
+            case "HEXADECIMAL" -> {
+                Converter convert = new ConvertToHex(intValueToConvert);
+                convert.displayResult();
+            }
+            default -> {
+                System.err.println("Select the correct conversion type (Roman/Hexadecimal)");
+                System.exit(1);
+            }
         }
 
     }
